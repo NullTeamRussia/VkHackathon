@@ -5,14 +5,14 @@
         </div>
         <div class="sidebar__menu">
             <div class="menu__item"
-                @click="active_page = 'hermitage_panel_dashboard'"
-                :class="{'menu__item--active': active_page === 'hermitage_panel_dashboard'}">
-                <icon name="dashboard" scale="1" class="menu__item-icon"></icon>
+                @click="active_page = 'hermitage_panel_routes'"
+                :class="{'menu__item--active': active_page === 'hermitage_panel_routes'}">
+                <icon name="map-o" scale="1" class="menu__item-icon"></icon>
             </div>
             <div class="menu__item"
                 @click="active_page = 'hermitage_panel_nodes'"
                 :class="{'menu__item--active': active_page === 'hermitage_panel_nodes'}">
-                <icon name="map-o" scale="1" class="menu__item-icon"></icon>    
+                <icon name="map-marker" scale="1" class="menu__item-icon"></icon>    
             </div>
             <div class="menu__item"
                 @click="active_page = 'hermitage_panel_exponats'"
@@ -40,28 +40,30 @@
 <script>
     import 'vue-awesome/icons/map-o'
     import 'vue-awesome/icons/picture-o'
-    import 'vue-awesome/icons/dashboard'
     import 'vue-awesome/icons/newspaper-o'
-    import HermitagePanelDashboard from '@/components/panel_components/HermitagePanelDashboard'
+    import 'vue-awesome/icons/map-marker'
+    import HermitagePanelRoutes from '@/components/panel_components/HermitagePanelRoutes'
     import HermitagePanelExponats from '@/components/panel_components/HermitagePanelExponats'
     import HermitagePanelNodes from '@/components/panel_components/HermitagePanelNodes'
+    import HermitagePanelNews from '@/components/panel_components/HermitagePanelNews'
     export default {
       name: 'HermitagePanelMain',
       data () {
         return {
           page_names: {
-            'hermitage_panel_dashboard': 'статистика',
+            'hermitage_panel_routes': 'маршруты',
             'hermitage_panel_nodes': 'павильоны',
             'hermitage_panel_exponats': 'экспонаты',
             'hermitage_panel_news': 'новости'
           },
-          active_page: 'hermitage_panel_dashboard'
+          active_page: 'hermitage_panel_routes'
         }
       },
       components: {
-        'hermitage_panel_dashboard': HermitagePanelDashboard,
+        'hermitage_panel_routes': HermitagePanelRoutes,
         'hermitage_panel_nodes': HermitagePanelNodes,
-        'hermitage_panel_exponats': HermitagePanelExponats
+        'hermitage_panel_exponats': HermitagePanelExponats,
+        'hermitage_panel_news': HermitagePanelNews
       }
     }
 </script>

@@ -1,11 +1,11 @@
 <template>
-  <div id="hermitage_panel_dashboard">
+  <div id="hermitage_panel_routes">
   </div>
 </template>
 
 <script>
     export default {
-      name: 'HermitagePanelDashboard',
+      name: 'HermitagePanelRoutes',
       data () {
         return {
         }
