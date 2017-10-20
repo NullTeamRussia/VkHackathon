@@ -30,7 +30,7 @@ export default {
   methods: {
     authorize () {
       if (this.login === 'admin' && this.password === 'qazwsx123') {
-        this.$router.push({name: 'panel_main'})
+        this.$router.push({name: 'hermitage_panel_main'})
       }
     }
   }
@@ -57,7 +57,7 @@ export default {
         height: 304px;
         width: 598px;
         background-color: #ecf0f1;
-        border-radius: 20px;
+        border-radius: 7px;
     }
 
     .form-field {
@@ -67,7 +67,7 @@ export default {
         align-items: center;
         width: 534px;
         height: 55px;
-        border-radius: 20px;
+        border-radius: 7px;
         background-color: #ffffff;
     }
 
@@ -102,7 +102,7 @@ export default {
     .form-field__submit {
         width: 100%;
         height: 55px;
-        border-radius: 20px;
+        border-radius: 7px;
         border: none;
         background-color: #2ecc71;
         text-transform: uppercase;

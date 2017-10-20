@@ -48,8 +48,8 @@ def deploy():
         rsync()
         docker_compose('up -d')
 
-    run('touch %s/nginx/maintenance && docker kill -s HUP forcamp_nginx_1' % PATH)
+    run('touch %s/nginx/maintenance && docker kill -s HUP hermitage_nginx_1' % PATH)
     rsync()
     docker_compose('pull')
     docker_compose('up -d')
-    run('rm -f %s/nginx/maintenance && docker kill -s HUP forcamp_nginx_1' % PATH)
+    run('rm -f %s/nginx/maintenance && docker kill -s HUP hermitages_nginx_1' % PATH)
