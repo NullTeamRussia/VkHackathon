@@ -14,10 +14,15 @@
                 :class="{'menu__item--active': active_page === 'hermitage_panel_nodes'}">
                 <icon name="map-o" scale="1" class="menu__item-icon"></icon>    
             </div>
-             <div class="menu__item"
+            <div class="menu__item"
                 @click="active_page = 'hermitage_panel_exponats'"
                 :class="{'menu__item--active': active_page === 'hermitage_panel_exponats'}">
                 <icon name="picture-o" scale="1" class="menu__item-icon"></icon>
+            </div>
+            <div class="menu__item"
+                @click="active_page = 'hermitage_panel_news'"
+                :class="{'menu__item--active': active_page === 'hermitage_panel_news'}">
+                <icon name="newspaper-o" scale="1" class="menu__item-icon"></icon>
             </div>
         </div>   
       </div>
@@ -27,7 +32,7 @@
                   <span class="header-page__text">{{page_names[active_page]}}</span>
               </div>
           </div>
-          <!-- <component :is="active_page"></component> -->
+          <component :is="active_page" class="container__content"></component>
       </div>
   </div>
 </template>
@@ -36,6 +41,10 @@
     import 'vue-awesome/icons/map-o'
     import 'vue-awesome/icons/picture-o'
     import 'vue-awesome/icons/dashboard'
+    import 'vue-awesome/icons/newspaper-o'
+    import HermitagePanelDashboard from '@/components/panel_components/HermitagePanelDashboard'
+    import HermitagePanelExponats from '@/components/panel_components/HermitagePanelExponats'
+    import HermitagePanelNodes from '@/components/panel_components/HermitagePanelNodes'
     export default {
       name: 'HermitagePanelMain',
       data () {
@@ -43,10 +52,16 @@
           page_names: {
             'hermitage_panel_dashboard': 'статистика',
             'hermitage_panel_nodes': 'павильоны',
-            'hermitage_panel_exponats': 'экспонаты'
+            'hermitage_panel_exponats': 'экспонаты',
+            'hermitage_panel_news': 'новости'
           },
           active_page: 'hermitage_panel_dashboard'
         }
+      },
+      components: {
+        'hermitage_panel_dashboard': HermitagePanelDashboard,
+        'hermitage_panel_nodes': HermitagePanelNodes,
+        'hermitage_panel_exponats': HermitagePanelExponats
       }
     }
 </script>
@@ -64,6 +79,7 @@
     }
 
     .sidebar {
+        z-index: 11;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -71,10 +87,6 @@
         width: 50px;
         background: #fff;
         box-shadow: 0.5px 0 1px 0 rgba(50, 50, 50, 0.3);
-    }
-
-    .container {
-        flex-grow: 1;
     }
 
     .brand {
@@ -93,39 +105,42 @@
         justify-content: center;
         align-items: center;
         height: 50px;
-        color: #2ecc71;
+        color: #3498db;
         transition: all 0.3s ease-in-out;
     }
 
     .menu__item:hover { cursor: pointer; }
 
     .menu__item:not(.menu__item--active):hover { 
-        background: #2ecc71;
+        background: #3498db;
         color: #fff;
     }
 
     .menu__item--active {
         color: #fff;
-        background: #2ecc71;
+        background: #3498db;
     }
 
     .menu__item--active::after {
         position: absolute;
         content: '';
-        background: #27ae60;
+        background: #2980b9;
         height: 50px;
         width: 5px;
         left: 45px;
     }
 
     .container {
+        z-index: 10;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: stretch;
+        flex-grow: 1;
     }
 
     .header {
+        z-index: 10;
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
@@ -145,7 +160,14 @@
     .header-page__text {
         text-transform: capitalize;
         font-size: 24px;
-        color: #2ecc71;
+        color: #3498db;
+    }
+
+    .container__content {
+        z-index: 9;
+        flex-grow: 1;
+        padding: 50px;
+        background: #ecf0f1;
     }
 
 </style>

@@ -46,7 +46,7 @@ export default {
         align-items: center;
         height: 100vh;
         width: 100vw;
-        background-color: #2ecc71
+        background-color: #fff;
     }
 
     .sign_in__form {
@@ -58,6 +58,7 @@ export default {
         width: 598px;
         background-color: #ecf0f1;
         border-radius: 7px;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 4px 1px -2px rgba(0,0,0,.2), 0 2px 5px 0 rgba(0,0,0,.12);
     }
 
     .form-field {
@@ -104,7 +105,7 @@ export default {
         height: 55px;
         border-radius: 7px;
         border: none;
-        background-color: #2ecc71;
+        background-color: #3498db;
         text-transform: uppercase;
         color: #fff;
         font-size: 30px;
@@ -113,7 +114,7 @@ export default {
         transition: all 0.3s ease-in-out;
     }
 
-    .form-field__submit:hover {  background: #27ae60; }
+    .form-field__submit:hover {  background: #2980b9; }
 
     .form-field__actions {
         display: flex;
