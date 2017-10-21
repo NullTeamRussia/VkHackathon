@@ -30,7 +30,11 @@
           </icon>
         </div>
       </div>
-      <div class="node_info"></div>
+      <div class="node_info">
+        <div class="node_info-name">
+          <span class="node_info-name__text"></span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -56,7 +60,16 @@
           nodes_graphics: '',
           canvas_moving: false,
           canvas_moving_allowed: true,
-          canvas_active_mode: ''
+          canvas_active_mode: '',
+          current_node: {
+            name: '',
+            available: true,
+            maxCount: 0,
+            description: '',
+            exponats: [],
+            x: 0,
+            y: 0
+          }
         }
       },
       mounted () {
@@ -68,7 +81,19 @@
             width: window.innerWidth
           }
         )
-        this.nodes_graphics.setBackgroundImage('http://www.hermitagemuseum.org/images/woa/TP/TP_B10_F1_1/TP_B10_F1_1.130179108052014.jpg')
+        this.nodes.forEach(node => {
+          var newNode = new fabric.Circle({
+            selectable: false
+          })
+          newNode.setPositionByOrigin(new fabric.Point(node.x, node.y))
+          newNode.setRadius(5)
+          newNode.setColor('#e74c3c')
+          this.nodes_graphics.add(newNode)
+        })
+        this.nodes_graphics.setBackgroundImage('http://www.hermitagemuseum.org/images/woa/TP/TP_B10_F1_1/TP_B10_F1_1.130179108052014.jpg', this.nodes_graphics.renderAll.bind(this.nodes_graphics), {
+          originX: 'left',
+          originY: 'top'
+        })
         this.activateViewMode()
       },
       methods: {

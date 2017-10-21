@@ -76,11 +76,11 @@
             'hermitage_panel_news': 'новости'
           },
           active_page: 'hermitage_panel_routes',
-          nodes: '',
-          news: '',
-          edges: '',
-          paths: '',
-          exponats: '',
+          nodes: [],
+          news: [],
+          edges: [],
+          paths: [],
+          exponats: [],
           is_modal_active: false
         }
       },
