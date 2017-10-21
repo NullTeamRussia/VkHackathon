@@ -14,8 +14,20 @@
         <div @click="activateViewMode">
           <icon 
             name="arrows" 
-            scale="1.5"
+            scale="1.3"
             :class="{'node__action--active': canvas_active_mode === 'view'}"></icon>
+        </div>
+        <div @click="zoomIn">
+          <icon 
+            name="search-plus" 
+            scale="1.4">
+          </icon>
+        </div>
+         <div @click="zoomOut">
+          <icon 
+            name="search-minus" 
+            scale="1.4">
+          </icon>
         </div>
       </div>
       <div class="node_info"></div>
@@ -26,6 +38,8 @@
 <script>
     import {fabric} from 'fabric'
     import 'vue-awesome/icons/plus'
+    import 'vue-awesome/icons/search-minus'
+    import 'vue-awesome/icons/search-plus'
     import 'vue-awesome/icons/arrows'
     export default {
       name: 'HermitagePanelNodes',
@@ -103,6 +117,12 @@
             var delta = new fabric.Point(e.e.movementX, e.e.movementY)
             this.nodes_graphics.relativePan(delta)
           }
+        },
+        zoomIn (e) {
+          this.nodes_graphics.setZoom(this.nodes_graphics.getZoom() + 0.1)
+        },
+        zoomOut (e) {
+          this.nodes_graphics.setZoom(this.nodes_graphics.getZoom() - 0.1)
         }
       }
     }
@@ -146,6 +166,10 @@
   }
 
   .node__actions > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     padding: 0 10px;
     height: 100%;
     color: #3498db;
@@ -154,7 +178,7 @@
     transition: all 0.3s ease-in-out;
   }
 
-  .node__actions > div:first-child { 
+  .node__actions > div:first-child {
     padding-left: 20px;
     border: none; 
   }

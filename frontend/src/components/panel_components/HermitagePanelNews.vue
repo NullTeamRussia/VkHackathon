@@ -4,6 +4,13 @@
           <div class="news" v-for="(item, index) in news" :key="index">
               <div class="news-headline">
                   <span class="news-headline__text">{{item.title}}</span>
+                  <div class="news-headline__actions" @click="deleteNews">
+                      <icon
+                        :data-content="item"
+                        :id="item._links.self.href" 
+                        name="trash-o" scale="1.5" 
+                        class="headline__action-delete"></icon>
+                  </div>
               </div>
               <div class="news-content">
                   <span class="news-content__text">{{item.text}}</span>
@@ -16,13 +23,13 @@
       </div>
       <div class="news_editor">
           <div class="news-headline">
-              <input class="news-headline__text" type="text" v-model="new_article_title" placeholder="Заголовок..."/>
+              <input class="news-headline__text" @keyup.enter="createNews" type="text" v-model="new_article_title" placeholder="Заголовок..."/>
               <div class="news-headline__actions" @click="createNews">
                   <icon name="plus" scale="1.5" class="headline__action-create"></icon>
               </div>
           </div>
           <div class="news-content">
-              <textarea class="news-content__text" v-model="new_article_text" placeholder="Текст..."/>
+              <textarea class="news-content__text" @ctrl.enter="createNews" v-model="new_article_text" placeholder="Текст..."/>
           </div>
           <div class="news-route">
               <icon name="map-o" scale="1" class="news-route__icon"></icon>
@@ -36,6 +43,7 @@
     import axios from 'axios'
     import 'vue-awesome/icons/map-o'
     import 'vue-awesome/icons/plus'
+    import 'vue-awesome/icons/trash-o'
     export default {
       name: 'HermitagePanelNews',
       props: [
@@ -56,7 +64,20 @@
         createNews () {
           axios.post('http://api.hermitage.nullteam.info/news', {
             'title': this.new_article_title, 'text': this.new_article_text, 'pathLink': ''
-          }).then(resp => { this.new_article_text = ''; this.new_article_title = '' })
+          }).then(resp => {
+            this.new_article_text = ''
+            this.new_article_title = ''
+            this.news.push(resp.data)
+            this.$emit('update:news', this.news)
+          })
+        },
+        deleteNews (e) {
+          if (e.target.id !== '') {
+            axios.delete(e.target.id).then(resp => {
+              this.news.splice(this.news.indexOf(e.target.dataset.content), 1)
+              this.$emit('update:news', this.news)
+            })
+          }
         }
       }
     }
@@ -172,6 +193,7 @@
         color: #fff;
     }
 
+    .news-headline__actions > svg { width: 100%; height: 100%; }
     .news-headline__actions > svg:hover { cursor: pointer }
 
 </style>
