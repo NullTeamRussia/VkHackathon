@@ -29,7 +29,7 @@
               </div>
           </div>
           <div class="news-content">
-              <textarea class="news-content__text" @ctrl.enter="createNews" v-model="new_article_text" placeholder="Текст..."/>
+              <textarea class="news-content__text" @keyup.ctrl.enter="createNews" v-model="new_article_text" placeholder="Текст..."/>
           </div>
           <div class="news-route">
               <icon name="map-o" scale="1" class="news-route__icon"></icon>
