@@ -1,5 +1,15 @@
 <template>
   <div id="hermitage_panel_main">
+      <component 
+        :is="'hermitage_panel_modal_main'" 
+        :active_page.sync="active_page"
+        :nodes.sync="nodes"
+        :edges.sync="edges"
+        :exponats.sync="exponats"
+        :news.sync="news"
+        :paths.sync="paths"
+        v-if="is_modal_active">
+      </component>
       <div class="sidebar">
         <div class="brand">
         </div>
@@ -32,7 +42,14 @@
                   <span class="header-page__text">{{page_names[active_page]}}</span>
               </div>
           </div>
-          <component :is="active_page" class="container__content"></component>
+          <component
+            :news.sync="news"
+            :edges.sync="edges"
+            :exponats.sync="exponats"
+            :nodes.sync="nodes" 
+            :paths.sync="paths"
+            :is_modal_active.sync="is_modal_active"
+            :is="active_page" class="container__content"></component>
       </div>
   </div>
 </template>
@@ -47,6 +64,7 @@
     import HermitagePanelExponats from '@/components/panel_components/HermitagePanelExponats'
     import HermitagePanelNodes from '@/components/panel_components/HermitagePanelNodes'
     import HermitagePanelNews from '@/components/panel_components/HermitagePanelNews'
+    import HermitagePanelModalMain from '@/components/HermitagePanelModalMain'
     export default {
       name: 'HermitagePanelMain',
       data () {
@@ -62,7 +80,8 @@
           news: '',
           edges: '',
           paths: '',
-          exponats: ''
+          exponats: '',
+          is_modal_active: false
         }
       },
       created () {
@@ -76,7 +95,8 @@
         'hermitage_panel_routes': HermitagePanelRoutes,
         'hermitage_panel_nodes': HermitagePanelNodes,
         'hermitage_panel_exponats': HermitagePanelExponats,
-        'hermitage_panel_news': HermitagePanelNews
+        'hermitage_panel_news': HermitagePanelNews,
+        'hermitage_panel_modal_main': HermitagePanelModalMain
       }
     }
 </script>

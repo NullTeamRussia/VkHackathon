@@ -6,6 +6,14 @@
 <script>
     export default {
       name: 'HermitagePanelRoutes',
+      props: [
+        'news',
+        'is_modal_active',
+        'paths',
+        'edges',
+        'exponats',
+        'nodes'
+      ],
       data () {
         return {
         }

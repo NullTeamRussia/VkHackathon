@@ -29,6 +29,14 @@
     import 'vue-awesome/icons/arrows'
     export default {
       name: 'HermitagePanelNodes',
+      props: [
+        'news',
+        'is_modal_active',
+        'paths',
+        'edges',
+        'exponats',
+        'nodes'
+      ],
       data () {
         return {
           nodes_graphics: '',
@@ -69,11 +77,13 @@
         },
         addNode (e) {
           if (this.canvas_active_mode === 'node_adding') {
-            var newNode = new fabric.Circle()
-            newNode.setRadius(5)
-            newNode.setColor('#e74c3c')
+            var newNode = new fabric.Circle({
+              selectable: false
+            })
             var point = this.nodes_graphics.getPointer(e.e)
             newNode.setPositionByOrigin(new fabric.Point(point.x, point.y))
+            newNode.setRadius(5)
+            newNode.setColor('#e74c3c')
             this.nodes_graphics.add(newNode)
             this.activateViewMode()
           }
