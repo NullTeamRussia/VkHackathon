@@ -1,6 +1,6 @@
 <template>
     <div id="hermitage_sign_in">
-        <div class="sign_in__form">
+        <form class="sign_in__form">
             <div class="form-field">
                 <input class="form-field__input" id="sign_in__form-login" v-model.trim="login" type="text" placeholder="Логин">
                 <icon name="user" scale="2" class="form-field__icon--user"></icon>
@@ -10,9 +10,13 @@
                 <icon name="lock" scale="2" class="form-field__icon--lock"></icon>
             </div>
             <div class="form-field__actions">
-                <input @click.prevent="authorize" class="form-field__submit" type="submit" value="Войти"/>
+                <input
+                @click.prevent="authorize" 
+                class="form-field__submit" 
+                type="submit" 
+                value="Войти"/>
             </div>
-        </div>
+        </form>
     </div>
 </template>
 

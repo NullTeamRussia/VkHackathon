@@ -38,6 +38,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     import 'vue-awesome/icons/map-o'
     import 'vue-awesome/icons/picture-o'
     import 'vue-awesome/icons/newspaper-o'
@@ -56,8 +57,20 @@
             'hermitage_panel_exponats': 'экспонаты',
             'hermitage_panel_news': 'новости'
           },
-          active_page: 'hermitage_panel_routes'
+          active_page: 'hermitage_panel_routes',
+          nodes: '',
+          news: '',
+          edges: '',
+          paths: '',
+          exponats: ''
         }
+      },
+      created () {
+        axios.get('http://api.hermitage.nullteam.info/nodes').then(resp => { this.nodes = resp.data._embedded.nodes })
+        axios.get('http://api.hermitage.nullteam.info/news').then(resp => { this.news = resp.data._embedded.news })
+        axios.get('http://api.hermitage.nullteam.info/edges').then(resp => { this.edges = resp.data._embedded.edges })
+        axios.get('http://api.hermitage.nullteam.info/paths').then(resp => { this.paths = resp.data._embedded.paths })
+        axios.get('http://api.hermitage.nullteam.info/exponats').then(resp => { this.exponats = resp.data._embedded.exponats })
       },
       components: {
         'hermitage_panel_routes': HermitagePanelRoutes,
@@ -86,7 +99,7 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: stretch;
-        width: 50px;
+        min-width: 50px;
         background: #fff;
         box-shadow: 0.5px 0 1px 0 rgba(50, 50, 50, 0.3);
     }
@@ -147,7 +160,7 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: stretch;
-        height: 50px;
+        min-height: 50px;
         box-shadow: 0 0.5px 1px 0 rgba(50, 50, 50, 0.3);
     }
 

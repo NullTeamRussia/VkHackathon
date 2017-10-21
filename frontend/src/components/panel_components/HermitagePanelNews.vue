@@ -70,10 +70,11 @@
         justify-content: flex-start;
         align-items: center;
         height: 50px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        background: #3498db;
     }
 
     .news-headline__text {
+        color: #fff;
         font-size: 24px;
         margin-left: 15px;
     }
