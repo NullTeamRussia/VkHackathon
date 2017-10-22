@@ -15,7 +15,7 @@ public class NewsModel {
   @SerializedName("title")
   @Setter @Getter private String title;
 
-  @SerializedName("description")
+  @SerializedName("text")
   @Setter @Getter private String description;
 
   /** make request to server, to get current route of user */
