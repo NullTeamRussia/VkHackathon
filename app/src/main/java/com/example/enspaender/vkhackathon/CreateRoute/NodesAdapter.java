@@ -35,14 +35,13 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder> 
 
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
     String name = names.get(position);
-    holder.rootView.setOnClickListener((view)-> {
-      holder.checkBox.setChecked(true);
-      listener.onChoose(name,holder.checkBox);
-    });
+    holder.name.setText(name);
+
+    listener.onChoose(name,holder.checkBox);
   }
 
   @Override public int getItemCount() {
-    return 0;
+    return names.size();
   }
 
   public interface ChooseListener{
@@ -59,4 +58,5 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder> 
       ButterKnife.bind(this,itemView);
     }
   }
+
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.CheckBox;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,21 +66,31 @@ public class CreateRouteActivity extends AppCompatActivity implements NodesAdapt
 
   private void showInRecycler(List<String> names) {
     adapter = new NodesAdapter(names,getLayoutInflater(),this);
+    roomRecycler.setAdapter(adapter);
   }
 
   @OnClick(R.id.save_route)
   public void save(){
-
+    // TODO: 22.10.17 post to helper api
   }
 
   @Override public void onChoose(String name, CheckBox checkBox) {
-    if (checkBox.isChecked()){
-      roomsSelected.add(name);
-    }else{
-      for (String n : names){
-        if (Objects.equals(n, name))
-          names.remove(name);
+    checkBox.setOnCheckedChangeListener((view,listener)->{
+      if (checkBox.isChecked()){
+        roomsSelected.add(name);
+        Log.e("RouteActivity",roomsSelected.toString());
+
+      }else{
+        for (String n : roomsSelected){
+          if (Objects.equals(n, name)) {
+            roomsSelected.remove(name);
+            Log.e("RouteActivity",roomsSelected.toString());
+          }
+        }
       }
-    }
+    });
+
+    Log.e("RouteActivity",roomsSelected.toString());
   }
+
 }

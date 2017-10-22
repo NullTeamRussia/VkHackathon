@@ -10,6 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.enspaender.vkhackathon.BuildingMaps.BuildingNavigation;
+import com.example.enspaender.vkhackathon.CreateRoute.CreateRouteActivity;
 import com.example.enspaender.vkhackathon.NewsScreen.NewsActivity;
 
 /**
@@ -49,6 +50,6 @@ public class MainScreen extends AppCompatActivity {
 
   @OnClick(R.id.create_route)
   public void clickCreateRoute(){
-    Toast.makeText(this, "create routes click", Toast.LENGTH_SHORT).show();
+    startActivity(new Intent(this, CreateRouteActivity.class));
   }
 }
