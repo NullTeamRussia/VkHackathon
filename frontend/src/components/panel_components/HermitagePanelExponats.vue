@@ -22,4 +22,7 @@
 </script>
 
 <style scoped>
+
+  #hermitage_panel_exponats { padding: 50px; }
+
 </style>

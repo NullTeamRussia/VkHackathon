@@ -239,22 +239,23 @@
         addNode (e) {
           if (this.canvas_active_mode === 'node_adding') {
             var newNode = new fabric.Circle({
-              selectable: false,
+              selectable: true,
               hoverCursor: 'pointer'
             })
             var point = this.nodes_graphics.getPointer(e.e)
-            newNode.setPositionByOrigin(new fabric.Point(point.x, point.y))
+            newNode.setPositionByOrigin(new fabric.Point(point.x - 5, point.y - 5))
             newNode.setRadius(5)
             newNode.setColor('#e74c3c')
             this.nodes_graphics.add(newNode)
-            this.new_node.x = point.x
-            this.new_node.y = point.y
+            this.new_node.x = point.x - 5
+            this.new_node.y = point.y - 5
             axios.post('http://api.hermitage.nullteam.info/nodes', this.new_node).then(resp => {
               this.nodes.push(resp.data)
               this.$emit('update:nodes', this.nodes)
               this.resetCurrentNode()
             })
             this.activateViewMode()
+            this.nodes_graphics.off('mouse:down', this.addNode)
           }
         },
         startMoveCanvas (e) {
@@ -356,20 +357,20 @@
           }
           var line = new fabric.Line(
             [
-              this.first_linking_node.x + 0.5,
-              this.first_linking_node.y + 0.5,
-              this.second_linking_node.x + 0.5,
-              this.second_linking_node.y + 0.5
+              this.first_linking_node.x + 5,
+              this.first_linking_node.y + 5,
+              this.second_linking_node.x + 5,
+              this.second_linking_node.y + 5
             ], {
               stroke: '#e74c3c'
             }
           )
           this.nodes_graphics.add(line)
           axios.post('http://api.hermitage.nullteam.info/edges', {
-            startX: this.first_linking_node.x + 0.5,
-            startY: this.first_linking_node.y + 0.5,
-            endX: this.second_linking_node.x + 0.5,
-            endY: this.second_linking_node.y + 0.5,
+            startX: this.first_linking_node.x + 5,
+            startY: this.first_linking_node.y + 5,
+            endX: this.second_linking_node.x + 5,
+            endY: this.second_linking_node.y + 5,
             weight: this.linking_nodes_weight
           }).then(resp => {
             this.edges.push(resp.data)
@@ -467,6 +468,7 @@
     min-height: 50px;
     color: #fff; 
     background: #3498db;
+    outline: none;
   }
 
   .node_info-name__text {
@@ -474,6 +476,7 @@
     font-size: 24px;
     white-space: nowrap;
     overflow: auto;
+    outline: none;
   }
 
   .node_info-name__text::-webkit-scrollbar { width: 0; height: 0; }
