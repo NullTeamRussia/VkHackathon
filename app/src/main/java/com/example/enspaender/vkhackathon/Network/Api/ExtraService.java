@@ -1,8 +1,10 @@
 package com.example.enspaender.vkhackathon.Network.Api;
 
+import com.example.enspaender.vkhackathon.Network.Models.BaseResponse;
 import com.example.enspaender.vkhackathon.Network.Models.NameModel;
 import com.example.enspaender.vkhackathon.Network.Models.News.NewsModel;
 import com.example.enspaender.vkhackathon.Network.Models.News.NewsResponse;
+import java.util.List;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -19,7 +21,7 @@ public interface ExtraService {
 
   @GET("/names") Observable<NameModel> getNames();
 
-  @POST("/calc") Observable setNames();
+  @POST("/calc") Observable<BaseResponse> setNames(@Body List<String> choosenRooms);
 
 
 }

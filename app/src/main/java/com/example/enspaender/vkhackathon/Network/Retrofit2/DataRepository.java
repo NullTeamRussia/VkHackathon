@@ -1,9 +1,11 @@
 package com.example.enspaender.vkhackathon.Network.Retrofit2;
 
+import com.example.enspaender.vkhackathon.Network.Models.BaseResponse;
 import com.example.enspaender.vkhackathon.Network.Models.MapBase.MapResponse;
 import com.example.enspaender.vkhackathon.Network.Models.MapRouting.MapRoutingObject;
 import com.example.enspaender.vkhackathon.Network.Models.NameModel;
 import com.example.enspaender.vkhackathon.Network.Models.News.NewsResponse;
+import java.util.List;
 import rx.Observable;
 
 /**
@@ -23,5 +25,7 @@ public interface DataRepository {
   Observable<NewsResponse> getNews(int size);
 
   Observable<NameModel> getNames();
+
+  Observable<BaseResponse> setNames(List<String> choosenRooms);
 
 }

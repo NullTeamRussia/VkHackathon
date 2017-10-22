@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.example.enspaender.vkhackathon.Network.Models.BaseResponse;
 import com.example.enspaender.vkhackathon.Network.Models.NameModel;
 import com.example.enspaender.vkhackathon.Network.Retrofit2.Provider;
 import com.example.enspaender.vkhackathon.R;
@@ -72,6 +73,22 @@ public class CreateRouteActivity extends AppCompatActivity implements NodesAdapt
   @OnClick(R.id.save_route)
   public void save(){
     // TODO: 22.10.17 post to helper api
+    Provider.provideDataRepository().setNames(roomsSelected)
+        .observeOn(Schedulers.io())
+        .subscribeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Subscriber<BaseResponse>() {
+          @Override public void onCompleted() {
+            Log.e("RouteActivity","OK");
+          }
+
+          @Override public void onError(Throwable e) {
+            Log.e("RouteActivity","FAIL");
+          }
+
+          @Override public void onNext(BaseResponse baseResponse) {
+
+          }
+        });
   }
 
   @Override public void onChoose(String name, CheckBox checkBox) {
