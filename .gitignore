@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 # Created by https://www.gitignore.io/api/androidstudio
 
 ### AndroidStudio ###
 # Covers files to be ignored for android development using Android Studio.
 
+=======
+>>>>>>> 0b7006a79b44ecdaf271a5f1bc7becfe1cd3a0fe
 # Built application files
 *.apk
 *.ap_
@@ -19,6 +22,7 @@ gen/
 out/
 
 # Gradle files
+<<<<<<< HEAD
 .gradle
 .gradle/
 build/
@@ -26,6 +30,11 @@ build/
 # Signing files
 .signing/
 
+=======
+.gradle/
+build/
+
+>>>>>>> 0b7006a79b44ecdaf271a5f1bc7becfe1cd3a0fe
 # Local configuration file (sdk path, etc)
 local.properties
 
@@ -35,6 +44,7 @@ proguard/
 # Log Files
 *.log
 
+<<<<<<< HEAD
 # Android Studio
 /*/build/
 /*/local.properties
@@ -126,3 +136,32 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.gitignore.io/api/androidstudio
+=======
+# Android Studio Navigation editor temp files
+.navigation/
+
+# Android Studio captures folder
+captures/
+
+# Intellij
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/dictionaries
+.idea/libraries
+
+# Keystore files
+*.jks
+
+# External native build folder generated in Android Studio 2.2 and later
+.externalNativeBuild
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+# Freeline
+freeline.py
+freeline/
+freeline_project_description.json
+>>>>>>> 0b7006a79b44ecdaf271a5f1bc7becfe1cd3a0fe
