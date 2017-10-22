@@ -12,6 +12,7 @@ import butterknife.OnClick;
 import com.example.enspaender.vkhackathon.BuildingMaps.BuildingNavigation;
 import com.example.enspaender.vkhackathon.CreateRoute.CreateRouteActivity;
 import com.example.enspaender.vkhackathon.NewsScreen.NewsActivity;
+import com.example.enspaender.vkhackathon.UsersRoutes.UserRoutesActivity;
 
 /**
  * Created by enspaender on 22.10.17.
@@ -39,6 +40,7 @@ public class MainScreen extends AppCompatActivity {
   @OnClick(R.id.my_routes)
   public void clickMyRoutes(){
     Toast.makeText(this, "my routes click", Toast.LENGTH_SHORT).show();
+    startActivity(new Intent(this, UserRoutesActivity.class));
   }
 
   @OnClick(R.id.base_map)

@@ -27,6 +27,7 @@ public class RetrofitManager {
   //private static volatile TasksDetailService tasksDetailService;
   private static volatile MapService mMapService;
   private static volatile ExtraService mExtraService;
+  private static volatile ExtraService mExtraHelperService;
 
 
   private RetrofitManager(){}
@@ -56,11 +57,11 @@ public class RetrofitManager {
   }
 
   public static ExtraService getExtraHelperService(){
-    ExtraService service = mExtraService;
+    ExtraService service = mExtraHelperService;
     if (service == null){
       synchronized (RetrofitManager.class){
         if (service == null){
-          service = mExtraService = buildHelperRetrofit().create(ExtraService.class);
+          service = mExtraHelperService = buildHelperRetrofit().create(ExtraService.class);
         }
       }
     }

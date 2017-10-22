@@ -5,6 +5,8 @@ import com.example.enspaender.vkhackathon.Network.Models.MapBase.MapResponse;
 import com.example.enspaender.vkhackathon.Network.Models.MapRouting.MapRoutingObject;
 import com.example.enspaender.vkhackathon.Network.Models.NameModel;
 import com.example.enspaender.vkhackathon.Network.Models.News.NewsResponse;
+import com.example.enspaender.vkhackathon.Network.Models.Routes.RoutesModel;
+import com.example.enspaender.vkhackathon.Network.Models.Routes.RoutesResponse;
 import java.util.List;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -42,6 +44,13 @@ public class OnlineDataRepository implements DataRepository {
 
   @Override public Observable<BaseResponse> setNames(List<String> choosenRooms) {
     return RetrofitManager.getExtraHelperService().setNames(choosenRooms)
+        .observeOn(Schedulers.io())
+        .subscribeOn(AndroidSchedulers.mainThread());
+  }
+
+  @Override public Observable<RoutesResponse> getRoutes() {
+    return RetrofitManager.getmExtraService()
+        .getRoutes()
         .observeOn(Schedulers.io())
         .subscribeOn(AndroidSchedulers.mainThread());
   }

@@ -58,6 +58,10 @@ dependencies {
   compile 'com.google.firebase:firebase-messaging:10.2.4'
   testCompile 'junit:junit:4.12'
   annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+  compile ('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.10.6@aar'){
+    transitive=true
+  }
 }
 
 apply plugin: 'com.google.gms.google-services'
