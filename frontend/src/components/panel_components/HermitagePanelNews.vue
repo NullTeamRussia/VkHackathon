@@ -57,8 +57,12 @@
       data () {
         return {
           new_article_title: '',
-          new_article_text: ''
+          new_article_text: '',
+          users: []
         }
+      },
+      mounted () {
+        axios.get('http://api.hermitage.nullteam.info/users').then(resp => { this.users = resp.data._embedded.users })
       },
       methods: {
         createNews () {
@@ -69,6 +73,9 @@
             this.new_article_title = ''
             this.news.push(resp.data)
             this.$emit('update:news', this.news)
+          })
+          axios.post('http://bot.hermitage.nullteam.info', {
+            'title': this.new_article_title, 'text': this.new_article_text, 'type': 0, 'users': this.users
           })
         },
         deleteNews (e) {
@@ -108,7 +115,7 @@
         margin-bottom: 50px;
         max-height: 200px;
         background: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 4px 0 rgba(0,0,0,.12);
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px -1px rgba(0,0,0,.2), 0 1px 2px 0 rgba(0,0,0,.12);
     }
 
     .news-headline {
@@ -166,7 +173,7 @@
         flex-grow: 1;
         margin-left: 50px;
         background: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 4px 0 rgba(0,0,0,.12);
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px -1px rgba(0,0,0,.2), 0 1px 2px 0 rgba(0,0,0,.12);
     }
 
     .news_editor .news-headline__text {

@@ -397,7 +397,7 @@
     flex-grow: 1;
     margin-right: 50px;
     background: transparent;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 4px 0 rgba(0,0,0,.12);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px -1px rgba(0,0,0,.2), 0 1px 2px 0 rgba(0,0,0,.12);
     overflow: hidden;
   }
 
@@ -418,7 +418,7 @@
     margin-bottom: 50px;
     min-height: 50px;
     background: #fff;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 4px 0 rgba(0,0,0,.12);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px -1px rgba(0,0,0,.2), 0 1px 2px 0 rgba(0,0,0,.12);
     transition: all 0.3s ease-in-out;
   }
 
@@ -457,7 +457,7 @@
     align-items: stretch;
     flex-grow: 1;
     background: #fff;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 4px 0 rgba(0,0,0,.12);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px -1px rgba(0,0,0,.2), 0 1px 2px 0 rgba(0,0,0,.12);
   }
 
   .node_info-name {

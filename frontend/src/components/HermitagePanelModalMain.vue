@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import HermitagePanelModalNews from '@/components/modals/HermitagePanelModalNews'
+    import HermitagePanelModalExponats from '@/components/modals/HermitagePanelModalExponats'
     export default {
       name: 'HermitagePanelModalMain',
       props: [
@@ -30,7 +30,7 @@
         }
       },
       components: {
-        'hermitage_panel_news': HermitagePanelModalNews
+        'hermitage_panel_exponats': HermitagePanelModalExponats
       }
     }
 </script>
